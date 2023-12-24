@@ -1,0 +1,19 @@
+@import '../colorPalette/palette.scss';
+.board-container{
+    margin: 0 auto;
+    width: 98vw;
+    height: 96vh;
+    display: flex;
+    gap: 1em;
+    backdrop-filter: blur(2px) saturate(180%);
+    background-color: $antiflash-white;
+    border-radius: 2em;
+}
+
+@media screen and (min-width: 320px) and (max-width: 728px){
+    .board-container{
+        height: 100vh;
+        overflow: hidden;
+        gap: 0;
+    }
+}

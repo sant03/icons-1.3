@@ -1,0 +1,175 @@
+<div class="home-container">
+    <div class="home-info">
+        <div>
+            <h2 class="info-welcome">Ventas</h2>
+            <p class="">Registro de Ventas</p>
+        </div>
+        <div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
+             </div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
+             </div> 
+        </div>
+    </div>
+    <section class="main-sells--container">
+        <div class="filter-buttons-container">
+            <button class="nb-button default card-button" [matMenuTriggerFor]="orderBy"><img src="../../assets/imagenes/order-by.png" alt=""></button>
+            <button class="nb-button default card-button" [matMenuTriggerFor]="filterBy"><img src="../../assets/imagenes/filtrar.png" alt=""></button>
+        </div>
+        <mat-menu #orderBy="matMenu" class="menu">
+            <div class="menu-top">
+                <p>Ordenar Por</p>
+                <img src="../../assets/imagenes/order-by.png" alt="">
+            </div>
+            <div class="menu-options-container" *ngFor="let orderBy of orderByOptions">
+                <div>
+                    <p>{{orderBy.label}}</p>
+                    <img src={{orderBy.icon}} alt="">
+                </div>
+                <div class="options" *ngFor="let option of orderBy.options">
+                    <label class="nb-label">{{option.label}}
+                        <input type="checkbox" id="recentsfirst" class="nb-checkbox" name="recentsfirst" value="recentsfirst">
+                    </label>
+                </div>
+            </div>
+            <div class="menu-options-buttons">
+                <button class="nb-button default card-button">Cancelar</button>
+                <button class="nb-button default card-button">Listo</button>
+            </div>
+        </mat-menu>
+        <mat-menu #filterBy="matMenu">
+            <button mat-menu-item>
+              
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              
+              <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+        <div class="table-container">
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+                </td>
+            </ng-container>
+    
+            <!-- Position Column -->
+            <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef> CLIENTE </th>
+                <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+            </ng-container>
+    
+            <!-- Name Column -->
+            <ng-container matColumnDef="sellcode">
+                <th mat-header-cell *matHeaderCellDef> CODIGO VENTA </th>
+                <td mat-cell *matCellDef="let element"> {{element.sellcode}} </td>
+            </ng-container>
+    
+            <!-- Weight Column -->
+            <ng-container matColumnDef="product">
+                <th mat-header-cell *matHeaderCellDef> PRODUCTO </th>
+                <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+            </ng-container>
+
+             <!-- Symbol Column -->
+             <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> CANTIDAD </th>
+                <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> TOTAL</th>
+                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="paystatement">
+                <th mat-header-cell *matHeaderCellDef> ESTADO DE PAGO </th>
+                <td mat-cell *matCellDef="let element"> {{element.paystatement}} </td>
+            </ng-container>
+    
+    
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <button class="nb-button default card-button" class="addButton" for="modal" (click)="showNewSellModal = true"><img src="../../assets/imagenes/add-icon.png" alt=""></button>
+        <form class="form" *ngIf="showNewSellModal" [@slideDown]>
+            <div class="dialog-top">
+                <div>
+                    <p>Nuevo Registro Ventas</p>
+                    <p>Rellene los campos solicitados</p>
+                </div>
+                <p>ID venta: <span>1</span></p>
+            </div>
+            <div class="form-container">
+                <div class="input-container">
+                    <label for="cliente">Cliente</label>
+                    <input class="input" name="text" placeholder="Cliente" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Producto</label>
+                    <input class="input" name="text" placeholder="Producto" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Fecha</label>
+                    <input class="input" name="text" placeholder="Fecha" type="date">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Cantidad</label>
+                    <input class="input" name="text" placeholder="Cantidad" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Estado de pago</label>
+                    <input class="input" name="text" placeholder="Estado de pago" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Precio unidad</label>
+                    <input class="input" name="text" placeholder="Precio unidad" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Comentarios</label>
+                    <input class="input" name="text" placeholder="Comentarios" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Total</label>
+                    <input class="input" name="text" placeholder="Total" type="text">
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button id="limpar" type="reset" (click)="showNewSellModal = false">Cancelar</button>
+                <button id="send" type="submit">Registrar</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+

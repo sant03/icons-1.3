@@ -1,0 +1,35 @@
+<div class="menu-container">
+    <div class="avatar">
+        <img src="../../assets/imagenes/logo.jpeg" alt="Avatar"/>
+     </div>
+    <div class="menu-links--container">
+        <div class="menu-link" 
+            *ngFor="let link of links, let i=index" 
+            (click)="getActiveLink(i)" 
+            [routerLink]="[link.route]"
+            [ngClass]="{'active': link.activeLink}">
+            <img src={{link.icon}} alt="" class="menu-link--icon">
+            <p class="menu-link--label">{{link.label}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="menu-container mobile" *ngIf="showMenu" [@slideDown]>
+    <div class="avatar">
+        <img src="../../assets/imagenes/logo.jpeg" alt="Avatar"/>
+     </div>
+    <div class="menu-links--container">
+        <div class="menu-link card" 
+            *ngFor="let link of links, let i=index" 
+            (click)="getActiveLink(i)" 
+            [routerLink]="[link.route]"
+            [ngClass]="{'active': link.activeLink}">
+            <img src={{link.icon}} alt="" class="menu-link--icon">
+            <p class="menu-link--label">{{link.label}}</p>
+        </div>
+    </div>
+</div>
+
+<div class="avatar menu-mobile" (click)="showMenu = !showMenu" >
+    <img src="../../assets/imagenes/menu.png" alt="Avatar" />
+ </div>
