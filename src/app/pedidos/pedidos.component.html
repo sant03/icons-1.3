@@ -1,0 +1,112 @@
+<div class="home-container">
+    <div class="home-info">
+        <div>
+            <h2 class="info-welcome"><span styel="color: lightgray">Ventas</span> / Pedidos</h2>
+            <p>Registro de Pedidos</p>
+        </div>
+        <div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
+             </div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
+             </div> 
+        </div>
+    </div>
+    <section class="main-clients--container">
+        <div class="filter-buttons-container">
+            <div>
+                <button class="nb-button default card-button" [matMenuTriggerFor]="orderBy"><img src="../../assets/imagenes/order-by.png" alt=""></button>
+            </div>
+        </div>
+        <mat-menu #orderBy="matMenu" class="menu">
+            <div class="menu-top">
+                <p>Ordenar Por</p>
+                <img src="../../assets/imagenes/order-by.png" alt="">
+            </div>
+            <div class="menu-options-container" *ngFor="let orderBy of orderByOptions">
+                <div>
+                    <p>{{orderBy.label}}</p>
+                    <img src={{orderBy.icon}} alt="">
+                </div>
+                <div class="options" *ngFor="let option of orderBy.options">
+                    <label class="nb-label">{{option.label}}
+                        <input type="checkbox" id="recentsfirst" class="nb-checkbox" name="recentsfirst" value="recentsfirst">
+                    </label>
+                </div>
+            </div>
+            <div class="menu-options-buttons">
+                <button class="nb-button default card-button">Cancelar</button>
+                <button class="nb-button default card-button">Listo</button>
+            </div>
+        </mat-menu>
+        <mat-menu #filterBy="matMenu">
+            <button mat-menu-item>
+              
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              
+              <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+        <mat-chip-listbox aria-label="Fish selection" style="margin-top: 1em;">
+            <mat-chip-option>Stock</mat-chip-option>
+            <mat-chip-option>Precio</mat-chip-option>
+            <mat-chip-option color="accent" selected>Categoria</mat-chip-option>
+            <mat-chip-option color="warn">Codigo</mat-chip-option>
+          </mat-chip-listbox>
+        <div class="clients-container">
+            <div class="left">
+                    <div class="card" style="gap: .5em" *ngFor="let pedido of pedidos">
+                        <h3 style="margin: 0;">{{pedido.name}}</h3>
+                        <img src='../../assets/imagenes/box.png' alt="Avatar" style="width: 3em;"/>
+                        <p style="margin: 0;">Fecha: {{pedido.date}}</p>
+                        <p style="margin: 0;">Cliente: <span style="color: rgb(44, 161, 200); font-weight: bold;">{{pedido.client}}</span></p>
+                    </div>
+            </div>
+        </div>
+        <button class="addButton" style="border: none;"><img src="../../assets/imagenes/box.png" alt=""></button>
+        <form class="form" *ngIf="showAddClientModal" [@slideDown]>
+            <div class="dialog-top">
+                <div>
+                    <p>Añadir Nuevo Producto</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="input-container">
+                    <label for="cliente">Referencia</label>
+                    <input class="input" name="text" placeholder="referencia" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Precio Venta</label>
+                    <input class="input" name="text" placeholder="precio venta" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Precio Compra</label>
+                    <input class="input" name="text" placeholder="precio compra" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Minimo de compra</label>
+                    <input class="input" name="text" placeholder="minimo de compra" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Codigo</label>
+                    <input class="input" name="text" placeholder="codigo" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Categoria</label>
+                    <input class="input" name="text" placeholder="categoria" type="text">
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button id="limpar" type="reset" (click)="showAddClientModal = false">Cancelar</button>
+                <button id="send" type="submit">Añadir</button>
+            </div>
+        </form>
+    </section>
+</div>

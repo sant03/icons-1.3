@@ -1,30 +1,12 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component } from '@angular/core';
+import { loginService } from '../services/loginService';
+import { FadeInAnimationDirective } from '../directives/GSAP/fade-in.directive';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  animations: [
-    trigger('slideDown', [
-      state('void', style({
-        transform: 'translateY(-100%)',
-        opacity: 0
-      })),
-      transition(':enter', [
-        animate('500ms ease-out', style({
-          transform: 'translateY(0)',
-          opacity: 1
-        })),
-      ]),
-      transition(':leave', [
-        animate('500ms ease-in', style({
-          transform: 'translateY(-100%)',
-          opacity: 0
-        })),
-      ]),
-    ]),
-  ],
 })
 export class MenuComponent {
 
@@ -56,7 +38,7 @@ export class MenuComponent {
     {
       icon: '../../assets/imagenes/producto-img-link.png',
       label: 'Productos',
-      route: '#',
+      route: '/products',
       activeLink: false
     },
     {
@@ -67,8 +49,8 @@ export class MenuComponent {
     },
     {
       icon: '../../assets/imagenes/orden-img-link.png',
-      label: 'Home',
-      route: '/home',
+      label: 'Orden',
+      route: '/orden',
       activeLink: false
     },
     {
@@ -76,20 +58,39 @@ export class MenuComponent {
       label: 'Ajustes',
       route: '#',
       activeLink: false
-    },
-    {
-      icon: '../../assets/imagenes/salir-img-link.png',
-      label: 'Salir',
-      route: '#',
-      activeLink: false
     }
   ]
   showMenu: boolean = false
+  islogged : string | null = ''
+  constructor(private loginService: loginService){}
+
+  OnInit(){
+    this.islogged = localStorage.getItem('logged')
+    if(this.islogged == 'false'){
+      this.loginService.islogged = false
+    }else{
+      this.loginService.islogged = true
+    }
+
+  }
 
   getActiveLink(index: number){
+    this.showMenu = false
     this.links.forEach(link =>{
       link.activeLink = false
     })
     this.links[index].activeLink = !this.links[index].activeLink
+  }
+
+  logout(){
+    this.loginService.logout()
+  }
+
+  rotate(){
+    gsap.to('.card', {
+      rotation: 360,
+      duration: 2,
+      ease: 'bounce.out'
+     })
   }
 }

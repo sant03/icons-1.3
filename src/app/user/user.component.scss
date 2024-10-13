@@ -1,0 +1,386 @@
+@import '../../colorPalette/palette.scss';
+.home-container{
+    width: 92vw;
+    height: 100%;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.home-info{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-info div:nth-child(2){
+    display: flex;
+    gap: 1em;
+}
+
+.home-info div:nth-child(2) .avatar img{
+    width: 2em;
+}
+
+.info-welcome{
+    font-size: 2.5em;
+    color: $space-cadet;
+}
+
+.info-user{
+    color: $red-pantone;
+}
+
+.main-clients--container{
+    width: 98%;
+    height: 90%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-top: 2em;
+    padding-right: 2em;
+
+}
+
+.main-clients--container::-webkit-scrollbar{
+    display: none;
+}
+
+.filter-buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.filter-buttons-container button img{
+    width: 1.5em;
+}
+
+.filter-buttons-container button:nth-child(1){
+    background-color: $space-cadet;
+    color: white;
+}
+
+
+
+.filter-buttons-container button:hover{
+    background-color: $space-cadet;
+    color: white;
+
+}
+
+.menu-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-top img{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.menu-options-container {
+    margin-top: 1em;
+}
+
+.menu-options-container div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid $space-cadet;
+}
+
+.menu-options-container div:nth-child(1) p{
+    font-weight: bold;
+}
+
+.options{
+    margin-top: 1em ;
+}
+
+.options label{
+    display: flex;
+    justify-content: space-between;
+    text-transform: initial;
+}
+
+.menu-options-buttons{
+   margin-top: 2em; 
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.menu-options-buttons button:hover{
+    background-color: $space-cadet;
+    color: white;
+}
+
+
+  .card{
+    width: 8%;
+    height: 9em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: center;
+    transition: all ease .5s;
+  }
+
+  .card:hover{
+    background-color: $space-cadet;
+    color: white;
+    transition: all ease .5s;
+  }
+
+  .card h3{
+    margin: 0;
+    color: $space-cadet;
+    font-weight: 600;
+  }
+
+  .card:hover h3{
+    color: white;
+  }
+
+ 
+
+  .addButton{
+    z-index: 4;
+    position: absolute;
+    bottom: 5%;
+    right: 20%;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 1em;
+}
+
+.addButton img{
+    width: 3em;
+}
+
+.form-buttons{
+  display: flex;
+  gap: 1em;
+  position: absolute;
+  right: 10em;
+  top: 53%;
+}
+
+
+
+.form-buttons button:nth-child(2){
+  background-color: $space-cadet;
+  color: white;
+}
+
+form{
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form p{
+    color: $space-cadet;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.user-info form div div{
+    width: 100%;
+   display: flex;
+   justify-content: space-between;
+   gap: 1em;
+   align-items: center;
+}
+
+ label{
+    font-size: 1.3em;
+    font-weight: 500;
+    color: $space-cadet;
+}
+
+input{
+    width: 60%;
+}
+
+
+.user-info{
+    width: 100%;
+    display: flex;
+    gap: 5em;
+}
+
+.user-info .avatar-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+}
+
+.user-info div .avatar{
+    width: 15em;
+    height: 15em;
+    background-color: white;
+}
+
+.user-info div .avatar img{
+    width: 90%;
+}
+
+.user-info div img{
+    width: 2em;
+}
+
+.config{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-top: 2em;
+    position: relative;
+    border-bottom: 5px solid $space-cadet;
+}
+
+.config h3{
+    margin: 0;
+    color: rgb(224, 151, 16);
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.config div{
+    display: flex;
+}
+
+.config div button{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    border: none;
+    background-color: transparent;
+    padding: 1em;
+    color: $space-cadet;
+    font-size: 1em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.config div button:hover{
+    
+}
+
+.config div button img{
+    width: 3em;
+}
+
+
+
+
+@media screen and (min-width: 320px) and (max-width: 728px){
+    .home-container{
+        width: 100vw;
+        padding: 3em 1em 2em 1em;
+    }
+
+    .info-welcome{
+        font-size: 1.5em;
+    }
+
+    .avatar{
+        width: 3em;
+        height: 3em;
+    }
+
+    .avatar img{
+        width: 1em;
+    }
+
+    .main-clients--container{
+        width: 100%;
+        margin-top: 0;
+        padding-right: 1em;
+        padding-bottom: 6em;
+    }
+
+    .clients-container{
+        height: 65%;
+        width: 100%;
+    }
+    .card{
+        width: 36%;
+    }
+
+    .card h3{
+      font-size: 1em;
+    }
+
+
+    .addButton{
+        right: 12%;
+        bottom: 5%;
+    }
+
+    .user-info{
+        flex-direction: column;
+    }
+
+    .user-info form div div{
+        width: 100%;
+    }
+
+    form{
+        width: 100%;
+        flex-direction: column;
+    }
+
+    form div:first-child{
+        width: 100% !important;
+        margin-bottom: 2em;
+    }
+
+    form div:nth-child(2){
+        width: 100% !important;
+    }
+
+    .form-buttons{
+        position: initial;
+        margin-top: 2em;
+    }
+
+    .config div{
+        flex-direction: column;
+    }
+}
+
+@keyframes slideLeft {
+  0%{
+    transform: translateX(2em);
+    transition: transform .5s ease;
+    z-index: 2;
+  }
+  100%{
+    transform: translateX(0px);
+    transition: transform .5s ease;
+    z-index: 0;
+  }
+}
+
+@keyframes slideRight {
+  0%{
+    transform: translateX(-2em);
+    transition: transform .5s ease;
+    z-index: 2;
+  }  
+  100%{
+    transform: translateX(0px);
+    transition: transform .5s ease;
+    z-index: 0;
+  }
+}
+
+
+  

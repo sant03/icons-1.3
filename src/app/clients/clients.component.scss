@@ -206,6 +206,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   .client:hover{
@@ -237,6 +238,7 @@
   }
 
   .addButton{
+    z-index: 4;
     position: absolute;
     bottom: 10%;
     right: 43%;
@@ -248,10 +250,99 @@
     width: 5em;
 }
 
+form {
+  background-color: $antiflash-white;
+  box-shadow: 1em 1em $space-cadet;
+  border-radius: 2em;
+  padding: 20px;
+  width: 30%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 50px auto;
+  position: absolute;
+  top: 25%;
+  right: 40%;
+  z-index: 2;
+}
+
+
+.dialog-top{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.dialog-top div p, .dialog-top p{
+  color: $space-cadet;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.dialog-top div p:nth-child(2){
+  font-size: 1em;
+}
+
+.form-container{
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.input-container{
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.input-container label{
+  color: $space-cadet;
+  font-weight: bold;
+}
+
+.input {
+  --input-focus: #2d8cf0;
+  --font-color: #fefefe;
+  --font-color-sub: #7e7e7e;
+  --bg-color: #111111;
+  --main-color: #fefefe;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 5px 10px;
+  outline: none;
+}
+
+.input::placeholder {
+  color: var(--font-color-sub);
+  opacity: 0.8;
+}
+
+.input:focus {
+  border: 2px solid var(--input-focus);
+}
+
+.form-buttons{
+  display: flex;
+  gap: 1em;
+}
+
 @media screen and (min-width: 320px) and (max-width: 728px){
     .home-container{
         width: 100vw;
-        padding: 3em 3em 2em 3em;
+        padding: 2em 1em 2em 1em;
+        justify-content: flex-start;
     }
 
     .info-welcome{
@@ -279,6 +370,7 @@
 
     .main-clients--container{
         width: 100%;
+        margin-top: 1em;
     }
 
     .clients-container{
@@ -286,20 +378,62 @@
     }
 
     .clients-container .right{
-        display: none;
+        position: absolute;
+        z-index: 2;
+        top: 3em;
+        right: .3em;
+        width: 100%;
+    }
+
+    .client{
+      background-color: #fff;
+      width: 90vw;
+      height: 80vh;
+    }
+
+    .client:hover{
+      background-color: #fff;
     }
     
     .clients-container .left{
         width: 100%;
+        height: 35em;
+        padding-bottom: 3em;
     }
 
     .avatar img{
-        width: 100% !important;
+        width: 100%;
     }
 
     .addButton{
         right: 12%;
-        bottom: 5%;
+        bottom: 12%;
+    }
+
+    .addButton img{
+      width: 3em;
+    }
+
+    form{
+      background-color: white;
+      box-shadow: 1em 1em 3em 0px darkgray;
+      border-radius: 1em;
+      border: none;
+      width: 90%;
+      height: 86%;
+      top: -3%;
+      right: 6%;
+      overflow: hidden;
+      overflow-y: scroll;
+    }
+
+    .form-buttons button{
+      padding: .5em !important;
+      margin: 0 !important;
+    } 
+
+    .input-container{
+      width: 97%;
     }
 }
 

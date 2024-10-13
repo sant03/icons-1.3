@@ -1,0 +1,577 @@
+@import '../../colorPalette/palette.scss';
+.home-container{
+    width: 92vw;
+    height: 100%;
+    padding: 3em;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.home-info{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.home-info div:nth-child(2){
+    display: flex;
+    gap: 1em;
+}
+
+.home-info div:nth-child(2) .avatar img{
+    width: 2em;
+}
+
+.info-welcome{
+    font-size: 2.5em;
+    color: $space-cadet;
+}
+
+.info-user{
+    color: $red-pantone;
+}
+
+.main-clients--container{
+    width: 98%;
+    height: 90%;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-top: 2em;
+    padding-right: 2em;
+
+}
+
+.main-clients--container::-webkit-scrollbar{
+    display: none;
+}
+
+.filter-buttons-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.table-container{
+    width: 100%;
+    border-radius: 2em;
+    overflow: hidden;
+    margin-top: 2em;
+}
+
+.table-container table{
+    box-shadow: none;
+    border-radius: 2em !important;
+}
+
+.table-container table th{
+    background-color: $antiflash-white;
+}
+
+.mat-mdc-row .mat-mdc-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+  }
+
+.mat-mdc-row:hover .mat-mdc-cell {
+    border-color: currentColor;
+}
+
+.filter-buttons-container button img{
+    width: 1.5em;
+}
+
+.filter-buttons-container button:nth-child(1){
+    background-color: $space-cadet;
+    color: white;
+}
+
+
+
+.filter-buttons-container button:hover{
+    background-color: $space-cadet;
+    color: white;
+
+}
+
+.menu-top{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu-top img{
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.menu-options-container {
+    margin-top: 1em;
+}
+
+.menu-options-container div:nth-child(1){
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 3px solid $space-cadet;
+}
+
+.menu-options-container div:nth-child(1) p{
+    font-weight: bold;
+}
+
+.options{
+    margin-top: 1em ;
+}
+
+.options label{
+    display: flex;
+    justify-content: space-between;
+    text-transform: initial;
+}
+
+.menu-options-buttons{
+   margin-top: 2em; 
+   display: flex;
+   align-items: center;
+   justify-content: space-evenly;
+}
+
+.menu-options-buttons button:hover{
+    background-color: $space-cadet;
+    color: white;
+}
+
+.searchBox {
+    display: flex;
+    width: 50%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: $space-cadet;
+    border-radius: 50px;
+    position: relative;
+  }
+  
+  .searchButton {
+    color: white;
+    position: absolute;
+    right: 8px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--gradient-2, linear-gradient(90deg, #2AF598 0%, #009EFD 100%));
+    border: 0;
+    display: inline-block;
+    transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  }
+  /*hover effect*/
+  button:hover {
+    color: #fff;
+    background-color: #1A1A1A;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 10px 20px;
+    transform: translateY(-3px);
+  }
+  /*button pressing effect*/
+  button:active {
+    box-shadow: none;
+    transform: translateY(0);
+  }
+  
+  .searchInput {
+    border: none;
+    background: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+    padding: 24px 46px 24px 26px;
+  }
+
+  .select-products{
+    margin-top: 2em;
+  }
+
+  .select-products p:nth-child(1){
+    color: $space-cadet;
+    font-weight: 600;
+  }
+
+  .select-products div:nth-child(2){
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .select-products div:nth-child(2) label{
+    color: $space-cadet;
+    font-weight: 500;
+  }
+
+  .clients-container{
+    width: 100%;
+    height: 12em;
+    margin-top: 1em;
+    display: flex;
+    border: 2px solid $space-cadet;
+    border-radius: 1em;
+    box-shadow: 1em 1em$space-cadet;
+    animation: slideRight 1s ease-in-out;
+  }
+
+  .clients-container .left{
+    width: 100%;
+    height: 100%;
+    overflow:  hidden;
+    overflow-y: scroll;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .left h4{
+    font-weight: bold;
+    color: $space-cadet;
+    font-size: 1.5em;
+  }
+
+  .clients-container .left::-webkit-scrollbar{
+    display: none;
+  }
+
+  .card{
+    width: 8%;
+    height: 9em;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    justify-content: center;
+    transition: all ease .5s;
+  }
+
+  .card:hover{
+    background-color: $space-cadet;
+    color: white;
+    transition: all ease .5s;
+  }
+
+  .card h3{
+    margin: 0;
+    color: $space-cadet;
+    font-weight: 600;
+  }
+
+  .card:hover h3{
+    color: white;
+  }
+
+  .client{
+    width: 80%;
+    height: 85%;
+    border-radius: 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform: translateY(-12em);
+  }
+
+  .client:hover{
+    background: none;
+    color: $space-cadet;
+  }
+
+  .client .avatar{
+    width: 15em;
+    height: 15em;
+    background-color: white;
+  }
+
+  .client .avatar img{
+    width: 100%;
+  }
+
+  .client h3{
+    font-size: 2em;
+    font-weight: bold;
+    color: $space-cadet;
+  }
+
+  .client p{
+    font-size: 1.5em;
+    font-weight: 500;
+    color: $space-cadet;
+  }
+
+  .addButton{
+    z-index: 4;
+    position: absolute;
+    bottom: 5%;
+    right: 20%;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 1em;
+}
+
+.addButton img{
+    width: 3em;
+}
+
+.form-buttons{
+  display: flex;
+  gap: 1em;
+}
+
+.form-buttons button:nth-child(2){
+  background-color: $space-cadet;
+  color: white;
+}
+
+form{
+    width: 100% !important;
+    padding: 1em; 
+    border: 2px solid $space-cadet;
+    border-radius: 1em;
+    box-shadow: 1em 1em$space-cadet;
+    margin-top: 1em;
+    animation: slideLeft 1s ease;
+}
+
+form p{
+    color: $space-cadet;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+form div{
+    display: flex;
+    justify-content: flex-start ;
+    flex-wrap: wrap;
+    gap: 1em;
+    align-items: center ;
+}
+
+form div label{
+    font-weight: 500;
+    color: $space-cadet;
+}
+
+.details-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 2em;
+  padding: 1em;
+}
+
+.details-container .left, .details-container .right{
+  width: 50%;
+}
+
+.left div{
+  display: flex;
+  justify-content: space-between;
+}
+
+.left .detail{
+  font-size: 1.5em;
+  font-weight: bold;
+  color: $space-cadet;
+  padding-bottom: .5em;
+  border-bottom: 4px solid $space-cadet;
+}
+
+.left div div{
+  display: flex;
+  flex-direction: column;
+}
+
+.left div div p{
+  font-size: 1.4em;
+  font-weight: 500;
+  font-style: italic;
+
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2em;
+}
+
+.right div{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.right div p, .right div span{
+  font-weight: bold;
+  font-size: 1.5em;
+  color: $space-cadet;
+}
+
+.right div span{
+  padding: 1em;
+  border-radius: .8em;
+  border: 2px solid $space-cadet;
+  background-color: rgb(148, 199, 148);
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 728px){
+    .home-container{
+        width: 100vw;
+        padding: 3em 1em 2em 1em;
+    }
+
+    .info-welcome{
+        font-size: 1.5em;
+    }
+
+    .avatar{
+        width: 3em;
+        height: 3em;
+    }
+
+    .avatar img{
+        width: 1em;
+    }
+
+    .searchBox{
+        width: 75%;
+        height: 4em;
+    }
+
+    .searchButton{
+        width: 40px;
+        height: 40px;
+    }
+
+    .main-clients--container{
+        width: 100%;
+        margin-top: 0;
+        padding-right: 1em;
+        padding-bottom: 6em;
+    }
+
+    .clients-container{
+        height: 65%;
+        width: 100%;
+    }
+    .card{
+        width: 36%;
+    }
+
+    .card h3{
+      font-size: 1em;
+    }
+
+    .client{
+      background-color: #fff;
+      width: 90vw;
+      height: 80vh;
+      transform: none;
+    }
+
+    .client:hover{
+      background-color: #fff;
+    }
+    
+    .clients-container .left{
+        width: 100%;
+        height: 24em;
+        overflow: hidden;
+        overflow-y: scroll;
+        gap: 0;
+    }
+
+    .avatar img{
+        width: 100%;
+    }
+
+    .addButton{
+        right: 12%;
+        bottom: 5%;
+    }
+
+    form{
+      width: 90%;
+      height: auto;
+      top: 11%;
+      right: 6%
+    }
+
+    form input{
+      margin-right: 3em;
+    }
+
+    .input-container{
+      width: 97%;
+    }
+
+    .select-products div:nth-child(2){
+        overflow: hidden;
+        overflow-x: scroll;
+        padding-bottom: 1em;
+        padding-right: 1em;
+    }
+
+    .select-products div:nth-child(2)::-webkit-scrollbar{
+        display: none;
+    }
+
+    .details-container{
+      flex-direction: column;
+    }
+
+    .left div{
+      flex-direction: column;
+    }
+
+    .details-container .left, .details-container .right{
+      width: 100%;
+    }
+
+    .form-buttons{
+      flex-direction: column-reverse;
+      width: 100%;
+
+    }
+
+    .right div p, .right div span, .left div div p{
+      font-size: 1.2em;
+    }
+}
+
+@keyframes slideLeft {
+  0%{
+    transform: translateX(2em);
+    transition: transform .5s ease;
+    z-index: 2;
+  }
+  100%{
+    transform: translateX(0px);
+    transition: transform .5s ease;
+    z-index: 0;
+  }
+}
+
+@keyframes slideRight {
+  0%{
+    transform: translateX(-2em);
+    transition: transform .5s ease;
+    z-index: 2;
+  }  
+  100%{
+    transform: translateX(0px);
+    transition: transform .5s ease;
+    z-index: 0;
+  }
+}
+
+
+  

@@ -1,26 +1,28 @@
-
 <div class="home-container">
-    <div class="home-info">
-        <div>
-            <h2 class="info-welcome">Bienvenido, <span class="info-user">Sr Freddy Potes</span></h2>
-            <p class="">10:30 pm - 15 feb 2022</p>
-        </div>
-        <div>
-            <div class="avatar">
-                <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
-             </div>
-            <div class="avatar">
-                <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
-             </div> 
-        </div>
+  <div class="home-info">
+    <div>
+      <h2 class="info-welcome">
+        Bienvenido,
+        <span class="info-user">Sr {{ user.name }} {{ user.lastname }}</span>
+      </h2>
+      <p class="">10:30 pm - 15 feb 2022</p>
     </div>
-    <div class="home-cards">
-        <div class="card" *ngFor="let card of cards">
-            <img src={{card.img}} alt="" class="card-img">
-            <ul class="card-list">
-                <li *ngFor="let item of card.ul">{{item}}</li>
-            </ul>
-            <button class="nb-button default card-button"> {{card.label}}</button>
-        </div>
+    <div>
+      <div class="avatar">
+        <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
+      </div>
+      <div class="avatar">
+        <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
+      </div>
     </div>
+  </div>
+  <div class="home-cards">
+    <div class="card" *ngFor="let card of cards">
+      <img src="{{ card.img }}" alt="" class="card-img" />
+      <ul class="card-list">
+        <li *ngFor="let item of card.ul">{{ item }}</li>
+      </ul>
+      <button class="nb-button default card-button">{{ card.label }}</button>
+    </div>
+  </div>
 </div>

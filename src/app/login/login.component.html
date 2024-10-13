@@ -1,0 +1,51 @@
+<div class="main-container">
+  <div class="arrow_back" [routerLink]="'/main'">
+    <img src="../../assets/imagenes/atras.png" alt="" />
+  </div>
+  <div class="info">
+    <h1 [@fadeIn] [@slideRightToLeft]>Login</h1>
+    <form action="">
+      <label for="usuario">Usuario</label><br />
+      <input class="nb-input default" type="email" />
+      <label for="usuario">Contraseña</label><br />
+      <input class="nb-input default" type="password" />
+      <button
+        class="nb-button default"
+        [@fadeIn]
+        [routerLink]="'/home'"
+        (click)="login()"
+      >
+        Login
+      </button>
+    </form>
+    <input type="checkbox" id="modal" />
+    <label style="align-self: center; margin: 0" for="modal"
+      >¿Olvido su contraseña?</label
+    >
+    <label for="modal" class="modal-background" style="margin: 0"></label>
+    <div class="modal dialog" style="width: 30%" [@fadeIn]>
+      <div style="display: flex; flex-direction: column">
+        <div>
+          <label style="font-weight: bold; text-align: center; margin: 0"
+            >Correo electronico o número de teléfono</label
+          >
+          <label for="modal" class="close"></label>
+        </div>
+        <input
+          class="nb-input default"
+          type="email"
+          style="margin-top: 3em; justify-self: center; align-self: center"
+        />
+        <button class="nb-button default" [@fadeIn] style="align-self: center">
+          Siguiente
+        </button>
+      </div>
+    </div>
+    <p>
+      ¿Aun no te has registrado? <a [routerLink]="'/signup'">Registrate aquí</a>
+    </p>
+  </div>
+  <!-- <img src="../../assets/imagenes/main-image.png" alt="" [@slideRightToLeft]> -->
+  <div class="circle circle2" [@slideRightToLeft]></div>
+  <div class="circle circle1" [@fadeIn]></div>
+</div>

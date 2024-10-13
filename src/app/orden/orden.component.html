@@ -1,0 +1,200 @@
+<div class="home-container">
+    <div class="home-info">
+        <div>
+            <h2 class="info-welcome">Orden de Compra</h2>
+            <p>Crear Nueva Orden de compra</p>
+        </div>
+        <div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
+             </div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
+             </div> 
+        </div>
+    </div>
+    <section class="main-clients--container">
+        <div class="filter-buttons-container">
+            <div class="">
+                <button class="nb-button default card-button" style="margin-right: 1em; margin-bottom: 1em;">Crear orden</button>
+                <button class="nb-button default card-button">Programar orden</button>
+            </div>
+
+        </div>
+       <form action="">
+         <p>Datos de la Orden</p>
+         <div>
+            <label for="">No de Orden</label>
+            <input class="nb-input default" placeholder="" type="number" />
+            <label for="">Estado</label>
+            <input class="nb-input default" placeholder="" type="text"/>
+            <label for="">Fecha de elaboración</label>
+            <input class="nb-input default" placeholder="" type="date"/>
+            <label for="">Proveedor</label>
+            <input class="nb-input default" placeholder="Text" type="text"/>
+            <label for="">Elaborado por</label>
+            <input class="nb-input default" placeholder="Text" type="text"/>
+            <label for="">Area</label>
+            <input class="nb-input default" placeholder="Text" type="text"/>
+            <label for="">Forma de pago</label>
+            <input class="nb-input default" placeholder="Text" type="text"/>
+            <label for="">Fecha de recepción</label>
+            <input class="nb-input default" placeholder="date" type="date"/>
+         </div>
+       </form>
+       <div class="select-products">
+            <p>Seleccionar productos</p>
+            <div>
+                <label for="">Categoria</label>
+                <input class="nb-input default" placeholder="" type="text" />
+                <label for="">Codigo</label>
+                <input class="nb-input default" placeholder="" type="number"/>
+                <label for="">Referencia</label>
+                <input class="nb-input default" placeholder="" type="text"/>
+                <label for="">Estado</label>
+                <input class="nb-input default" placeholder="" type="text"/>
+            </div>
+            <div class="clients-container">
+                <div class="left">
+                        <div class="card" style="gap: .5em" *ngFor="let pedido of pedidos">
+                            <h3 style="margin: 0;">{{pedido.name}}</h3>
+                            <img src='../../assets/imagenes/producto-img-link.png' alt="Avatar" style="width: 3em;"/>
+                            <p style="margin: 0;">Quedan 3</p>
+                        </div>
+                </div>
+            </div>
+       </div>
+
+       <div class="filter-buttons-container" style="justify-content: space-between; margin-top: 3em;">
+           <p style="font-size: 1.5em; font-weight: bold;">Orden 003</p>
+           <div style="display: flex; align-items: center; gap: 1em">
+               <p style="color:darkgray; font-weight: bold; font-size: 1.2em; margin: 0;">7/01/2024</p>
+               <button class="nb-button default card-button" [matMenuTriggerFor]="orderBy"><img src="../../assets/imagenes/order-by.png" alt=""></button>
+           </div>
+       </div>
+       <div class="table-container">
+            <mat-menu #orderBy="matMenu" class="menu">
+                <div class="menu-top">
+                    <p>Ordenar Por</p>
+                    <img src="../../assets/imagenes/order-by.png" alt="">
+                </div>
+                <div class="menu-options-container" *ngFor="let orderBy of orderByOptions">
+                    <div>
+                        <p>{{orderBy.label}}</p>
+                        <img src={{orderBy.icon}} alt="">
+                    </div>
+                    <div class="options" *ngFor="let option of orderBy.options">
+                        <label class="nb-label">{{option.label}}
+                            <input type="checkbox" id="recentsfirst" class="nb-checkbox" name="recentsfirst" value="recentsfirst">
+                        </label>
+                    </div>
+                </div>
+                <div class="menu-options-buttons">
+                    <button class="nb-button default card-button">Cancelar</button>
+                    <button class="nb-button default card-button">Listo</button>
+                </div>
+            </mat-menu>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Checkbox Column -->
+            <ng-container matColumnDef="select">
+                <th mat-header-cell *matHeaderCellDef>
+                <mat-checkbox (change)="$event ? toggleAllRows() : null"
+                                [checked]="selection.hasValue() && isAllSelected()"
+                                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                                [aria-label]="checkboxLabel()">
+                </mat-checkbox>
+                </th>
+                <td mat-cell *matCellDef="let row">
+                <mat-checkbox (click)="$event.stopPropagation()"
+                                (change)="$event ? selection.toggle(row) : null"
+                                [checked]="selection.isSelected(row)"
+                                [aria-label]="checkboxLabel(row)">
+                </mat-checkbox>
+                </td>
+            </ng-container>
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="customer">
+                <th mat-header-cell *matHeaderCellDef> CLIENTE </th>
+                <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="sellcode">
+                <th mat-header-cell *matHeaderCellDef> CODIGO VENTA </th>
+                <td mat-cell *matCellDef="let element"> {{element.sellcode}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="product">
+                <th mat-header-cell *matHeaderCellDef> PRODUCTO </th>
+                <td mat-cell *matCellDef="let element"> {{element.product}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> CANTIDAD </th>
+                <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="total">
+                <th mat-header-cell *matHeaderCellDef> TOTAL</th>
+                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="paystatement">
+                <th mat-header-cell *matHeaderCellDef> ESTADO DE PAGO </th>
+                <td mat-cell *matCellDef="let element"> {{element.paystatement}} </td>
+            </ng-container>
+
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+                (click)="selection.toggle(row)">
+            </tr>
+            </table>
+            <mat-paginator [pageSizeOptions]="[5, 10]"
+                showFirstLastButtons
+                aria-label="Select page of periodic elements">
+            </mat-paginator>
+        </div>
+        <div class="details-container">
+            <div class="left">
+                <p class="detail"><img src="../../assets/imagenes/alerta.png" alt="" style="width: 1em">Detalles</p>
+                <div>
+                    <div>
+                        <p>Datos de Proveedor</p>
+                        <p>Nombre: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p>Dirección: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p>Telefono: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p>Email: <span style="color: deepskyblue; font-weight: bold;"> Plastidias</span></p>
+                    </div>
+                    <div>
+                        <p>General</p>
+                        <p>Nombre: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p>Dirección: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p>Telefono: <span style="color: deepskyblue; font-weight: bold;">Plastidias</span></p>
+                        <p style="display: flex; margin-top: 2em;">Aprobado Por: <span style="width: 20em; border-bottom: 2px solid black; display: inline-block;"></span> </p>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <div>
+                    <p>Total</p>
+                    <span class="total">89.000</span>
+                </div>
+                <div>
+                    <p>Total Productos a adquirir</p>
+                    <span class="total">36</span>
+                </div>
+                <div class="form-buttons">
+                    <button class="nb-button default card-button">Cancelar</button>
+                    <button class="nb-button default card-button" style="margin-right: 1em;">Guardar Orden</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

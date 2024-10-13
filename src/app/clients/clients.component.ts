@@ -51,10 +51,21 @@ export class ClientsComponent {
     }
   ]
 
+  constructor(){}
+
+  showInfoClient: boolean = false
+  showAddClientModal: boolean = false
+  selectedClient : any = {
+  }
+
   clients: Array<any> = [
     {
       img: '../../assets/imagenes/user-icon.png',
-      name: 'Santiago Potes'
+      name: 'Santiago Potes',
+      id: 2344432,
+      adress: 'Calle 56#34 423',
+      phone: '+56987654321',
+      email: 'santiago@gmail.com'
     },
     {
       img: '../../assets/imagenes/user-icon.png',
@@ -73,4 +84,9 @@ export class ClientsComponent {
       name: 'Santiago Potes'
     }
   ]
+
+  selectClient(client: any): void{
+    this.showInfoClient = true
+    this.selectedClient = client
+  }
 }

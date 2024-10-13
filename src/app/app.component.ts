@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { loginService } from '../app/services/loginService';
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ICONS1.3';
+  islogged : any = new Boolean(false)
+  
+  constructor(private loginService: loginService) {
+
+  }
+
+  ngOnInit(){
+    this.islogged = this.loginService.islogged
+  }
 }

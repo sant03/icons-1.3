@@ -11,10 +11,14 @@
             <img src={{link.icon}} alt="" class="menu-link--icon">
             <p class="menu-link--label">{{link.label}}</p>
         </div>
+        <div class="menu-link" (click)="logout()">
+            <img src='../../assets/imagenes/salir-img-link.png' alt="" class="menu-link--icon">
+            <p class="menu-link--label">Salir</p>
+        </div>
     </div>
 </div>
 
-<div class="menu-container mobile" *ngIf="showMenu" [@slideDown]>
+<div class="menu-container mobile">
     <div class="avatar">
         <img src="../../assets/imagenes/logo.jpeg" alt="Avatar"/>
      </div>
@@ -27,9 +31,13 @@
             <img src={{link.icon}} alt="" class="menu-link--icon">
             <p class="menu-link--label">{{link.label}}</p>
         </div>
+        <div class="menu-link card" (click)="logout()">
+            <img src='../../assets/imagenes/salir-img-link.png' alt="" class="menu-link--icon">
+            <p class="menu-link--label">Salir</p>
+        </div>
     </div>
 </div>
 
-<div class="avatar menu-mobile" (click)="showMenu = !showMenu" >
+<!-- <div class="avatar menu-mobile" (click)="showMenu = !showMenu" >
     <img src="../../assets/imagenes/menu.png" alt="Avatar" />
- </div>
+ </div> -->

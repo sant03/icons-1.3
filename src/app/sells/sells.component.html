@@ -53,6 +53,12 @@
               <span>Disable alerts</span>
             </button>
         </mat-menu>
+        <mat-chip-listbox aria-label="Fish selection" style="margin-top: 1em;">
+            <mat-chip-option>Stock</mat-chip-option>
+            <mat-chip-option>Precio</mat-chip-option>
+            <mat-chip-option color="accent" selected>Categoria</mat-chip-option>
+            <mat-chip-option color="warn">Codigo</mat-chip-option>
+          </mat-chip-listbox>
         <div class="table-container">
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
@@ -121,6 +127,7 @@
                  aria-label="Select page of periodic elements">
             </mat-paginator>
         </div>
+        <button class="nb-button default card-button" class="pedidosButton" for="modal" [routerLink]="'/pedidos'"><img src="../../assets/imagenes/ped-icon.png" alt="" style="width: 2em;"></button>
         <button class="nb-button default card-button" class="addButton" for="modal" (click)="showNewSellModal = true"><img src="../../assets/imagenes/add-icon.png" alt=""></button>
         <form class="form" *ngIf="showNewSellModal" [@slideDown]>
             <div class="dialog-top">
@@ -165,8 +172,8 @@
                 </div>
             </div>
             <div class="form-buttons">
-                <button id="limpar" type="reset" (click)="showNewSellModal = false">Cancelar</button>
-                <button id="send" type="submit">Registrar</button>
+                <button class="nb-button default card-button" style="margin-right: 1em;" (click)="showNewSellModal = false">Cancelar</button>
+                <button class="nb-button default card-button" style="margin-right: 1em;">Registrar</button>
             </div>
         </form>
     </section>

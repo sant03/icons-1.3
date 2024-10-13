@@ -1,0 +1,56 @@
+<div class="main-container">
+  <div class="arrow_back" [routerLink]="'/main'">
+    <img src="../../assets/imagenes/atras.png" alt="" />
+  </div>
+  <div class="info">
+    <h1 [@fadeIn] [@slideRightToLeft]>Sign Up</h1>
+    <form [formGroup]="formSignUp">
+      <div>
+        <label for="usuario">Nombres</label><br />
+        <input class="nb-input default" type="text" formControlName="name" />
+      </div>
+      <div>
+        <label for="usuario">Apellidos</label><br />
+        <input
+          class="nb-input default"
+          type="text"
+          formControlName="lastname"
+        />
+      </div>
+      <div>
+        <label for="usuario">Fecha de Nacimiento</label><br />
+        <input
+          class="nb-input default"
+          type="date"
+          formControlName="birthDate"
+        />
+      </div>
+      <div>
+        <label for="usuario">Correo electronico</label><br />
+        <input class="nb-input default" type="email" formControlName="email" />
+      </div>
+      <div>
+        <label for="usuario">Contraseña</label><br />
+        <input
+          class="nb-input default"
+          type="password"
+          formControlName="password"
+        />
+      </div>
+      <div>
+        <label for="usuario">Telefono</label><br />
+        <input class="nb-input default" type="number" formControlName="phone" />
+      </div>
+      <div>
+        <label for="usuario">DNA</label><br />
+        <input class="nb-input default" type="number" formControlName="dna" />
+      </div>
+      <button class="nb-button default" [@fadeIn] (click)="saveUser()">
+        Sign Up
+      </button>
+    </form>
+  </div>
+  <!-- <img src="../../assets/imagenes/main-image.png" alt="" [@slideRightToLeft]> -->
+  <div class="circle circle2" [@slideRightToLeft]></div>
+  <div class="circle circle1" [@fadeIn]></div>
+</div>

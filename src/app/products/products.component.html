@@ -1,0 +1,166 @@
+<div class="home-container">
+    <div class="home-info">
+        <div>
+            <h2 class="info-welcome">Productos</h2>
+        </div>
+        <div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/bell-icon.png" alt="Avatar" />
+             </div>
+            <div class="avatar">
+                <img src="../../assets/imagenes/user-icon.png" alt="Avatar" />
+             </div> 
+        </div>
+    </div>
+    <section class="main-clients--container">
+        <div class="filter-buttons-container">
+            <div class="searchBox">
+                <input class="searchInput" type="text" name="" placeholder="Search something">
+                <button class="searchButton" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29" fill="none">
+                        <g clip-path="url(#clip0_2_17)">
+                            <g filter="url(#filter0_d_2_17)">
+                            <path d="M23.7953 23.9182L19.0585 19.1814M19.0585 19.1814C19.8188 18.4211 20.4219 17.5185 20.8333 16.5251C21.2448 15.5318 21.4566 14.4671 21.4566 13.3919C21.4566 12.3167 21.2448 11.252 20.8333 10.2587C20.4219 9.2653 19.8188 8.36271 19.0585 7.60242C18.2982 6.84214 17.3956 6.23905 16.4022 5.82759C15.4089 5.41612 14.3442 5.20435 13.269 5.20435C12.1938 5.20435 11.1291 5.41612 10.1358 5.82759C9.1424 6.23905 8.23981 6.84214 7.47953 7.60242C5.94407 9.13789 5.08145 11.2204 5.08145 13.3919C5.08145 15.5634 5.94407 17.6459 7.47953 19.1814C9.01499 20.7168 11.0975 21.5794 13.269 21.5794C15.4405 21.5794 17.523 20.7168 19.0585 19.1814Z" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" shape-rendering="crispEdges"></path>
+                            </g>
+                        </g>
+                        <defs>
+                            <filter id="filter0_d_2_17" x="-0.418549" y="3.70435" width="29.7139" height="29.7139" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood>
+                            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix>
+                            <feOffset dy="4"></feOffset>
+                            <feGaussianBlur stdDeviation="2"></feGaussianBlur>
+                            <feComposite in2="hardAlpha" operator="out"></feComposite>
+                            <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"></feColorMatrix>
+                            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_2_17"></feBlend>
+                            <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_2_17" result="shape"></feBlend>
+                            </filter>
+                            <clipPath id="clip0_2_17">
+                            <rect width="28.0702" height="28.0702" fill="white" transform="translate(0.403503 0.526367)"></rect>
+                            </clipPath>
+                        </defs>
+                    </svg>                 
+                </button>
+            </div>
+            <div>
+                <button class="nb-button default card-button" [matMenuTriggerFor]="orderBy"><img src="../../assets/imagenes/order-by.png" alt=""></button>
+            </div>
+        </div>
+        <mat-menu #orderBy="matMenu" class="menu">
+            <div class="menu-top">
+                <p>Ordenar Por</p>
+                <img src="../../assets/imagenes/order-by.png" alt="">
+            </div>
+            <div class="menu-options-container" *ngFor="let orderBy of orderByOptions">
+                <div>
+                    <p>{{orderBy.label}}</p>
+                    <img src={{orderBy.icon}} alt="">
+                </div>
+                <div class="options" *ngFor="let option of orderBy.options">
+                    <label class="nb-label">{{option.label}}
+                        <input type="checkbox" id="recentsfirst" class="nb-checkbox" name="recentsfirst" value="recentsfirst">
+                    </label>
+                </div>
+            </div>
+            <div class="menu-options-buttons">
+                <button class="nb-button default card-button">Cancelar</button>
+                <button class="nb-button default card-button">Listo</button>
+            </div>
+        </mat-menu>
+        <mat-menu #filterBy="matMenu">
+            <button mat-menu-item>
+              
+              <span>Redial</span>
+            </button>
+            <button mat-menu-item disabled>
+              
+              <span>Check voice mail</span>
+            </button>
+            <button mat-menu-item>
+              
+              <span>Disable alerts</span>
+            </button>
+        </mat-menu>
+        <mat-chip-listbox aria-label="Fish selection" style="margin-top: 1em;">
+            <mat-chip-option>Stock</mat-chip-option>
+            <mat-chip-option>Precio</mat-chip-option>
+            <mat-chip-option color="accent" selected>Categoria</mat-chip-option>
+            <mat-chip-option color="warn">Codigo</mat-chip-option>
+          </mat-chip-listbox>
+        <div class="clients-container">
+            <div class="left">
+                <div *ngFor="let category of categories">
+                    <h4>{{category.name}}</h4>
+                    <div class="cards-container">
+                        <div class="card" *ngFor="let product of category.products" (click)="selectClient(product)">
+                            <div class="avatar bg-pale-red">
+                                <img src='../../assets/imagenes/producto-img-link.png' alt="Avatar" />
+                             </div>
+                             <h3>{{product.name}}</h3>
+                        </div>
+                        <div class="card" style="border: none; box-shadow: none; height: 11em; display: flex; align-items: center; justify-content: center;"  for="modal" (click)="showAddClientModal = true">
+                            <img src='../../assets/imagenes/add-pro-icon.png' alt="Avatar" style="width: 3em;"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="right" *ngIf="showInfoClient">
+                <div class="card client">
+                    <div>
+                        <img src="../../assets/imagenes/editar.png" alt="" style="width: 2em; position: absolute; top: 2em; left: 2em;">
+                        <p style="font-size: 2em; font-weight: bold; position: absolute; top: 1em; right: 1em;" (click)="showInfoClient= false">X</p>
+                    </div>
+                    <div class="avatar bg-pale-red">
+                        <img src='../../assets/imagenes/producto-img-link.png' alt="Avatar" />
+                     </div>
+                     <h3>{{selectedClient.name}}</h3>
+                     <p>Cantidad: {{selectedClient.id}}</p>
+                     <p>Precio Venta: {{selectedClient.adress}}</p>
+                     <p>Precio Compra:{{selectedClient.phone}}</p>
+                     <p>Minimo de compra: {{selectedClient.email}}</p>
+                     <p>Codigo: {{selectedClient.email}}</p>
+                     <p>Categoria: {{selectedClient.email}}</p>
+                     <h3>Por Agotarse</h3>
+                </div>
+            </div>
+        </div>
+        <button class="nb-button default card-button" class="addButton"><img src="../../assets/imagenes/add-icon.png" alt=""></button>
+        <form class="form" *ngIf="showAddClientModal" [@slideDown]>
+            <div class="dialog-top">
+                <div>
+                    <p>Añadir Nuevo Producto</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="input-container">
+                    <label for="cliente">Referencia</label>
+                    <input class="input" name="text" placeholder="referencia" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Precio Venta</label>
+                    <input class="input" name="text" placeholder="precio venta" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Precio Compra</label>
+                    <input class="input" name="text" placeholder="precio compra" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Minimo de compra</label>
+                    <input class="input" name="text" placeholder="minimo de compra" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Codigo</label>
+                    <input class="input" name="text" placeholder="codigo" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Categoria</label>
+                    <input class="input" name="text" placeholder="categoria" type="text">
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button class="nb-button default card-button" style="margin-right: 1em;" (click)="showAddClientModal = false">Cancelar</button>
+                <button class="nb-button default card-button" style="margin-right: 1em;">Registrar</button>
+            </div>
+        </form>
+    </section>
+</div>

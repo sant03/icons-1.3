@@ -1,7 +1,7 @@
 <div class="home-container">
     <div class="home-info">
         <div>
-            <h2 class="info-welcome">Clientes</h2>
+            <h2 class="info-welcome">Clientes / <span [routerLink]="'/vendors'" style="color: lightgray;">Proveedores</span></h2>
         </div>
         <div>
             <div class="avatar">
@@ -84,26 +84,63 @@
         <div class="clients-container">
             <div class="left">
                 <h4>Todos</h4>
-                <div class="card" *ngFor="let client of clients">
+                <div class="card" *ngFor="let client of clients" (click)="selectClient(client)">
                     <div class="avatar bg-pale-red">
                         <img src={{client.img}} alt="Avatar" />
                      </div>
                      <h3>{{client.name}}</h3>
                 </div>
             </div>
-            <div class="right">
+            <div class="right" *ngIf="showInfoClient">
                 <div class="card client">
+                    <div>
+                        <img src="../../assets/imagenes/editar.png" alt="" style="width: 2em; position: absolute; top: 2em; left: 2em;">
+                        <p style="font-size: 2em; font-weight: bold; position: absolute; top: 1em; right: 1em;" (click)="showInfoClient= false">X</p>
+                    </div>
                     <div class="avatar bg-pale-red">
                         <img src='../../assets/imagenes/user-icon.png' alt="Avatar" />
                      </div>
-                     <h3>Client Name</h3>
-                     <p>ID:</p>
-                     <p>Direccion:</p>
-                     <p>Telefono:</p>
-                     <p>Email:</p>
+                     <h3>{{selectedClient.name}}</h3>
+                     <p>ID: {{selectedClient.id}}</p>
+                     <p>Direccion: {{selectedClient.adress}}</p>
+                     <p>Telefono:{{selectedClient.phone}}</p>
+                     <p>Email: {{selectedClient.email}}</p>
                 </div>
             </div>
         </div>
-        <button class="nb-button default card-button" class="addButton" for="modal"><img src="../../assets/imagenes/add-icon.png" alt=""></button>
+        <button class="nb-button default card-button" class="addButton" for="modal" (click)="showAddClientModal = true"><img src="../../assets/imagenes/add-icon.png" alt=""></button>
+        <form class="form" *ngIf="showAddClientModal" [@slideDown]>
+            <div class="dialog-top">
+                <div>
+                    <p>Añadir Nuevo Cliente</p>
+                </div>
+            </div>
+            <div class="form-container">
+                <div class="input-container">
+                    <label for="cliente">Nombre</label>
+                    <input class="input" name="text" placeholder="Nombre" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Id</label>
+                    <input class="input" name="text" placeholder="CC" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Dirección</label>
+                    <input class="input" name="text" placeholder="Dirección" type="text">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Telefono</label>
+                    <input class="input" name="text" placeholder="Telefono" type="number">
+                </div>
+                <div class="input-container">
+                    <label for="cliente">Email</label>
+                    <input class="input" name="text" placeholder="Email" type="email">
+                </div>
+            </div>
+            <div class="form-buttons">
+                <button class="nb-button default card-button" style="margin-right: 1em;" (click)="showAddClientModal = false">Cancelar</button>
+                <button class="nb-button default card-button" style="margin-right: 1em;">Registrar</button>
+            </div>
+        </form>
     </section>
 </div>
